@@ -1,15 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. معرفة اسم العميل من رابط الصفحة (اسم المجلد الحالي)
-    const pathSegments = window.location.pathname.split('/');
-    // جلب اسم المجلد قبل الأخير أو الأخير الذي يحتوي على معرف العميل
-    const clientKey = pathSegments.filter(s => s && s !== 'index.html').pop() || "demo";
+    // 1. معرفة اسم العميل من رابط الصفحة بطريقة مرنة ومضمونة على GitHub
+    const pathSegments = window.location.pathname.split('/').filter(s => s && s !== 'index.html');
+    
+    // جلب آخر عنصر في المسار (الذي يجب أن يكون معرف العميل مثل client004)
+    let clientKey = pathSegments[pathSegments.length - 1] || "demo";
+    
+    // إذا انتهى الرابط بـ client-tracker بالخطأ، خذ المجلد الأخير المناسب
+    if (clientKey === "client-tracker" && pathSegments.length > 1) {
+        clientKey = pathSegments[pathSegments.length - 2];
+    }
 
     // 2. جلب بيانات العميل من ملف الـ Config
     const clientData = CLIENTS_DATABASE[clientKey];
 
     const trackerCard = document.querySelector('.tracker-card');
     if (!trackerCard || !clientData) {
-        console.error("Client data not found in config.js!");
+        console.error("Client data not found in config.js for key:", clientKey);
         return;
     }
 

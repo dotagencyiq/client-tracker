@@ -1,142 +1,259 @@
+/* ============================================================
+   DOT AGENCY — Live Client Progress Tracker
+   نظام تصميم موحّد (Design Tokens) + تحسينات بصرية وحركية
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    /* ألوان الهوية */
+    --navy-deep:      #0a1622;
+    --navy:           #0d1b2a;
+    --navy-light:     #16283d;
+    --gold:           #f3a613;
+    --gold-soft:      #fcd980;
+    --success:        #16a34a;
+    --success-soft:   #dcfce7;
+
+    /* درجات محايدة */
+    --ink-900:        #0f172a;
+    --ink-700:        #1e293b;
+    --ink-500:        #64748b;
+    --ink-400:        #94a3b8;
+    --ink-200:        #e2e8f0;
+    --ink-100:        #f1f5f9;
+    --ink-50:         #f8fafc;
+    --white:          #ffffff;
+
+    /* أبعاد ومقاييس */
+    --radius-lg:      20px;
+    --radius-md:      12px;
+    --radius-sm:      8px;
+    --radius-full:    999px;
+
+    --shadow-card:    0 20px 45px -12px rgba(13, 27, 42, 0.18), 0 4px 12px rgba(13, 27, 42, 0.06);
+    --shadow-soft:    0 10px 30px rgba(15, 23, 42, 0.06);
+
+    --font-display:   'Sora', 'Segoe UI', Tahoma, sans-serif;
+    --font-body:      'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* إعادة تعيين الخطوط والتنسيقات الأساسية */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-body);
 }
 
 body {
-    background-color: #f8fafc;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(243, 166, 19, 0.06), transparent 45%),
+        radial-gradient(circle at 85% 90%, rgba(13, 27, 42, 0.05), transparent 45%),
+        var(--ink-50);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 24px;
 }
 
-/* الحاوية الرئيسية للتتبع */
+*:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ============================================================
+   الحاوية الرئيسية للتتبع
+   ============================================================ */
 .tracker-card {
-    background-color: #ffffff;
+    background-color: var(--white);
     width: 100%;
     max-width: 500px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
     overflow: hidden;
-    border: 1px solid #f1f5f9;
+    border: 1px solid var(--ink-100);
+    animation: cardEnter 0.7s var(--ease-out) both;
 }
 
-/* الهيدر الكحلي */
+@keyframes cardEnter {
+    from { opacity: 0; transform: translateY(16px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ============================================================
+   الهيدر الكحلي
+   ============================================================ */
 .tracker-header {
-    background-color: #0d1b2a;
-    color: #ffffff;
+    position: relative;
+    background:
+        radial-gradient(circle at 50% -20%, rgba(243, 166, 19, 0.18), transparent 55%),
+        linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: var(--white);
     text-align: center;
-    padding: 25px 20px;
+    padding: 32px 20px 28px;
+    overflow: hidden;
 }
 
-.logo-area {
-    margin-bottom: 15px;
+/* خط ذهبي علوي رفيع كتوقيع بصري للبراند */
+.tracker-header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
+
+.logo-area { margin-bottom: 16px; }
 
 .logo-placeholder {
-    font-size: 28px;
+    font-family: var(--font-display);
+    font-size: 30px;
     font-weight: 800;
-    letter-spacing: 4px;
-    color: #ffffff;
+    letter-spacing: 6px;
+    color: var(--white);
+    text-shadow: 0 0 24px rgba(243, 166, 19, 0.35);
 }
+
 .logo-placeholder span {
-    color: #f3a613;
+    color: var(--gold);
 }
 
 .sub-logo {
-    font-size: 11px;
-    letter-spacing: 6px;
-    color: #a0aec0;
-    margin-top: -5px;
+    font-size: 10px;
+    letter-spacing: 7px;
+    color: var(--ink-400);
+    margin-top: 2px;
     text-transform: uppercase;
 }
 
 .tracker-title {
-    font-size: 18px;
+    font-family: var(--font-display);
+    font-size: 16px;
     font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-top: 15px;
+    letter-spacing: 1.5px;
+    margin-top: 18px;
+    color: var(--white);
 }
 
 .tracker-title span {
-    color: #f3a613;
+    position: relative;
+    color: var(--gold);
+    margin-left: 2px;
 }
 
-/* قسم بيانات العميل */
+/* نقطة "بث مباشر" نابضة بجانب كلمة LIVE — توقيع الهوية */
+.tracker-title span::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-left: 6px;
+    vertical-align: middle;
+    animation: livePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(243, 166, 19, 0.55); }
+    50%      { box-shadow: 0 0 0 6px rgba(243, 166, 19, 0); }
+}
+
+/* ============================================================
+   قسم بيانات العميل
+   ============================================================ */
 .client-info {
-    padding: 30px 40px;
+    padding: 28px clamp(24px, 6vw, 40px);
 }
 
 .info-row {
     display: flex;
     align-items: center;
-    margin-bottom: 18px;
-    font-size: 16px;
+    margin-bottom: 16px;
+    font-size: 15px;
 }
 
-.info-row:last-child {
-    margin-bottom: 0;
-}
+.info-row:last-child { margin-bottom: 0; }
 
 .info-icon {
-    width: 40px;
-    height: 40px;
-    background-color: #f8fafc;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background-color: var(--ink-50);
+    border: 1px solid var(--ink-100);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 20px;
-    font-size: 18px;
+    margin-inline-end: 16px;
+    font-size: 16px;
+    transition: transform 0.25s var(--ease-smooth), border-color 0.25s var(--ease-smooth);
+}
+
+.info-row:hover .info-icon {
+    transform: translateY(-2px);
+    border-color: var(--gold-soft);
 }
 
 .info-label {
     font-weight: 600;
-    color: #1e293b;
-    width: 90px;
+    color: var(--ink-700);
+    width: 80px;
+    flex-shrink: 0;
 }
 
 .info-separator {
-    color: #64748b;
-    margin-right: 15px;
+    color: var(--ink-500);
+    margin-inline-end: 12px;
 }
 
 .info-value {
-    color: #0f172a;
+    color: var(--ink-900);
     font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .status-badge {
     display: inline-flex;
     align-items: center;
-    color: #16a34a;
+    color: var(--success);
     font-weight: 600;
+    background-color: var(--success-soft);
+    padding: 4px 12px 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 13px;
 }
 
 .status-dot {
-    width: 12px;
-    height: 12px;
-    background-color: #16a34a;
+    width: 8px;
+    height: 8px;
+    background-color: var(--success);
     border-radius: 50%;
     display: inline-block;
-    margin-right: 8px;
+    margin-inline-end: 7px;
+    animation: livePulse 2s ease-in-out infinite;
 }
 
 /* الفواصل الخطية */
 .divider {
     border: none;
-    border-top: 1px solid #e2e8f0;
-    margin: 0 30px;
+    border-top: 1px solid var(--ink-100);
+    margin: 0 clamp(20px, 5vw, 30px);
 }
 
-/* قسم شريط التقدم */
+/* ============================================================
+   قسم شريط التقدم
+   ============================================================ */
 .progress-section {
-    padding: 25px 40px;
+    padding: 24px clamp(24px, 6vw, 40px);
     text-align: center;
 }
 
@@ -144,11 +261,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
-    color: #1e293b;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+    color: var(--ink-700);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
 }
 
 .progress-header::before,
@@ -156,54 +273,78 @@ body {
     content: "";
     flex: 1;
     height: 1px;
-    background: #e2e8f0;
     margin: 0 15px;
     max-width: 50px;
 }
 
-.progress-header::before { background: linear-gradient(to left, #e2e8f0, #f3a613); }
-.progress-header::after { background: linear-gradient(to right, #e2e8f0, #f3a613); }
+.progress-header::before { background: linear-gradient(to left, var(--ink-200), var(--gold)); }
+.progress-header::after  { background: linear-gradient(to right, var(--ink-200), var(--gold)); }
 
 .percentage-box {
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    background: linear-gradient(160deg, var(--ink-50), var(--white));
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-md);
     display: inline-block;
-    padding: 10px 25px;
+    padding: 12px 28px;
     margin-bottom: 20px;
+    box-shadow: var(--shadow-soft);
 }
 
 .percentage-text {
-    font-size: 32px;
+    font-family: var(--font-display);
+    font-size: 34px;
     font-weight: 800;
-    color: #15803d;
+    color: var(--success);
+    font-variant-numeric: tabular-nums;
 }
 
 .percentage-text span {
-    color: #1e293b;
-    font-size: 24px;
+    font-family: var(--font-body);
+    color: var(--ink-700);
+    font-size: 12px;
     font-weight: 700;
-    margin-left: 5px;
+    letter-spacing: 1px;
+    margin-left: 6px;
+    vertical-align: middle;
 }
 
 .progress-bar-container {
     width: 100%;
-    height: 14px;
-    background-color: #f1f5f9;
-    border-radius: 10px;
+    height: 12px;
+    background-color: var(--ink-100);
+    border-radius: var(--radius-full);
     overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 .progress-bar-fill {
+    position: relative;
     height: 100%;
-    background-color: #16a34a;
-    border-radius: 10px;
-    width: 0%; /* سيتم التحكم بها حركياً عبر JS بناءً على المرحلة */
+    background: linear-gradient(90deg, var(--success), #22c55e);
+    border-radius: var(--radius-full);
+    width: 0%; /* يُتحكم بها حركياً عبر JS بناءً على المرحلة */
+    overflow: hidden;
 }
 
-/* خارطة الطريق (Roadmap) */
+/* لمعة متحركة خفيفة داخل الشريط لإحساس "حيّ" */
+.progress-bar-fill::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    animation: shimmer 2.2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ============================================================
+   خارطة الطريق (Roadmap)
+   ============================================================ */
 .roadmap-section {
-    padding: 35px 30px;
+    padding: 32px clamp(18px, 5vw, 30px) 8px;
 }
 
 .roadmap-container {
@@ -215,11 +356,12 @@ body {
 
 .roadmap-line {
     position: absolute;
-    top: 18px;
+    top: 17px;
     left: 10%;
     right: 10%;
     height: 3px;
-    background-color: #e2e8f0;
+    background-color: var(--ink-200);
+    border-radius: var(--radius-full);
     z-index: 1;
 }
 
@@ -228,8 +370,9 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    width: 0%; /* سيتم ملؤه تلقائياً بواسطة JS */
-    background-color: #16a34a;
+    width: 0%; /* يُملأ تلقائياً بواسطة JS */
+    background: linear-gradient(90deg, var(--success), #22c55e);
+    border-radius: var(--radius-full);
 }
 
 .roadmap-step {
@@ -249,108 +392,185 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 14px;
-    background-color: #ffffff;
-    border: 3px solid #cbd5e1;
+    font-size: 13px;
+    background-color: var(--white);
+    border: 3px solid var(--ink-200);
+    transition: all 0.35s var(--ease-smooth);
 }
 
 /* الحالات المختلفة */
 .step.completed .step-icon {
-    background-color: #16a34a;
-    border-color: #16a34a;
-    color: white;
+    background-color: var(--success);
+    border-color: var(--success);
+    color: var(--white);
 }
 
 .step.active .step-icon {
-    background-color: #ffffff;
-    border-color: #f3a613;
-    color: #f3a613;
-    box-shadow: 0 0 0 4px rgba(243, 166, 19, 0.15);
+    background-color: var(--white);
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: 0 0 0 5px rgba(243, 166, 19, 0.15);
+    animation: activePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes activePulse {
+    0%, 100% { box-shadow: 0 0 0 5px rgba(243, 166, 19, 0.15); }
+    50%      { box-shadow: 0 0 0 8px rgba(243, 166, 19, 0.08); }
 }
 
 .step-title {
     font-size: 11px;
     font-weight: 700;
-    color: #64748b;
+    color: var(--ink-500);
     text-align: center;
     margin-top: 12px;
     line-height: 1.3;
+    transition: color 0.3s var(--ease-smooth);
 }
 
 .step-subtitle {
     font-size: 10px;
     font-weight: 700;
-    color: #64748b;
+    color: var(--ink-500);
     text-align: center;
     margin-top: 3px;
     line-height: 1.2;
+    transition: color 0.3s var(--ease-smooth);
+}
+
+.step.completed .step-title,
+.step.completed .step-subtitle {
+    color: var(--ink-700);
 }
 
 .step.active .step-title,
 .step.active .step-subtitle {
-    color: #0f172a;
+    color: var(--ink-900);
 }
 
-.step.active .step-title::before { content: "▶ "; color: #f3a613; }
-.step.active .step-title::after { content: " ◀"; color: #f3a613; }
-.step.active .step-subtitle::before { content: "▶ "; color: #f3a613; }
-.step.active .step-subtitle::after { content: " ◀"; color: #f3a613; }
+.step.active .step-title::before { content: "▸ "; color: var(--gold); }
+.step.active .step-title::after  { content: " ◂"; color: var(--gold); }
 
 .step-indicator-bar {
-    width: 25px;
+    width: 22px;
     height: 3px;
-    background-color: #cbd5e1;
+    background-color: var(--ink-200);
     margin-top: 8px;
-    border-radius: 2px;
+    border-radius: var(--radius-full);
+    transition: background-color 0.3s var(--ease-smooth);
 }
 
-.step.completed .step-indicator-bar { background-color: #16a34a; }
-.step.active .step-indicator-bar { background-color: #f3a613; }
+.step.completed .step-indicator-bar { background-color: var(--success); }
+.step.active .step-indicator-bar    { background-color: var(--gold); }
 
-/* شاشة انتهاء المشروع (Finished Project Screen) */
+/* ============================================================
+   شاشة انتهاء المشروع (Finished Project Screen)
+   ============================================================ */
 .finished-screen {
     display: none; /* تظهر فقط عند تفعيل الحالة */
     text-align: center;
-    padding: 60px 40px;
-    animation: fadeIn 0.6s ease-out;
+    padding: 56px clamp(24px, 6vw, 40px);
+    animation: fadeIn 0.6s var(--ease-out);
 }
 
 .finished-icon {
-    font-size: 64px;
-    margin-bottom: 25px;
+    font-size: 58px;
+    margin-bottom: 20px;
+    animation: popIn 0.6s var(--ease-out) 0.1s both;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.6); }
+    to   { opacity: 1; transform: scale(1); }
 }
 
 .finished-title {
-    font-size: 24px;
+    font-family: var(--font-display);
+    font-size: 22px;
     font-weight: 800;
-    color: #0f172a;
-    margin-bottom: 15px;
+    color: var(--ink-900);
+    margin-bottom: 14px;
 }
 
 .finished-desc {
-    font-size: 15px;
-    color: #64748b;
-    line-height: 1.6;
-    margin-bottom: 30px;
+    font-size: 14px;
+    color: var(--ink-500);
+    line-height: 1.7;
+    margin-bottom: 28px;
 }
 
 .finished-footer {
     font-size: 12px;
-    color: #94a3b8;
-    border-top: 1px solid #f1f5f9;
-    padding-top: 20px;
+    color: var(--ink-400);
+    border-top: 1px solid var(--ink-100);
+    padding-top: 18px;
 }
 
 /* حالة إخفاء المتعقب عند انتهاء المشروع */
-.project-finished .tracker-body-wrapper {
+.project-finished .tracker-body-wrapper { display: none; }
+.project-finished .finished-screen { display: block; }
+
+/* ============================================================
+   حالة الخطأ (لا توجد بيانات لهذا العميل) — تُفعَّل عبر JS
+   ============================================================ */
+.tracker-card.data-error .tracker-body-wrapper,
+.tracker-card.data-error .finished-screen {
     display: none;
 }
 
-.project-finished .finished-screen {
+.error-screen {
+    display: none;
+    text-align: center;
+    padding: 56px clamp(24px, 6vw, 40px);
+}
+
+.tracker-card.data-error .error-screen {
     display: block;
+}
+
+.error-icon { font-size: 48px; margin-bottom: 18px; }
+
+.error-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--ink-900);
+    margin-bottom: 10px;
+}
+
+.error-desc {
+    font-size: 13px;
+    color: var(--ink-500);
+    line-height: 1.6;
 }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   استجابة الشاشات الصغيرة
+   ============================================================ */
+@media (max-width: 420px) {
+    .logo-placeholder { letter-spacing: 4px; font-size: 26px; }
+    .tracker-title { font-size: 14px; letter-spacing: 1px; }
+
+    .info-label { width: 66px; font-size: 14px; }
+    .info-value { font-size: 14px; }
+
+    .roadmap-section { padding-inline: 10px; }
+    .step-title, .step-subtitle { font-size: 9.5px; }
+    .step-icon { width: 30px; height: 30px; }
+    .roadmap-line { top: 14px; }
+
+    .percentage-text { font-size: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
 }

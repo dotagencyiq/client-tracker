@@ -1,0 +1,356 @@
+/* إعادة تعيين الخطوط والتنسيقات الأساسية */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* الحاوية الرئيسية للتتبع */
+.tracker-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+    border: 1px solid #f1f5f9;
+}
+
+/* الهيدر الكحلي */
+.tracker-header {
+    background-color: #0d1b2a;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 20px;
+}
+
+.logo-area {
+    margin-bottom: 15px;
+}
+
+.logo-placeholder {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #ffffff;
+}
+.logo-placeholder span {
+    color: #f3a613;
+}
+
+.sub-logo {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: #a0aec0;
+    margin-top: -5px;
+    text-transform: uppercase;
+}
+
+.tracker-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 15px;
+}
+
+.tracker-title span {
+    color: #f3a613;
+}
+
+/* قسم بيانات العميل */
+.client-info {
+    padding: 30px 40px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    font-size: 16px;
+}
+
+.info-row:last-child {
+    margin-bottom: 0;
+}
+
+.info-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f8fafc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #1e293b;
+    width: 90px;
+}
+
+.info-separator {
+    color: #64748b;
+    margin-right: 15px;
+}
+
+.info-value {
+    color: #0f172a;
+    font-weight: 500;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #16a34a;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+/* الفواصل الخطية */
+.divider {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 0 30px;
+}
+
+/* قسم شريط التقدم */
+.progress-section {
+    padding: 25px 40px;
+    text-align: center;
+}
+
+.progress-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.progress-header::before,
+.progress-header::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 0 15px;
+    max-width: 50px;
+}
+
+.progress-header::before { background: linear-gradient(to left, #e2e8f0, #f3a613); }
+.progress-header::after { background: linear-gradient(to right, #e2e8f0, #f3a613); }
+
+.percentage-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 10px 25px;
+    margin-bottom: 20px;
+}
+
+.percentage-text {
+    font-size: 32px;
+    font-weight: 800;
+    color: #15803d;
+}
+
+.percentage-text span {
+    color: #1e293b;
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 14px;
+    background-color: #f1f5f9;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #16a34a;
+    border-radius: 10px;
+    width: 0%; /* سيتم التحكم بها حركياً عبر JS بناءً على المرحلة */
+}
+
+/* خارطة الطريق (Roadmap) */
+.roadmap-section {
+    padding: 35px 30px;
+}
+
+.roadmap-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.roadmap-line {
+    position: absolute;
+    top: 18px;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background-color: #e2e8f0;
+    z-index: 1;
+}
+
+.roadmap-line-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%; /* سيتم ملؤه تلقائياً بواسطة JS */
+    background-color: #16a34a;
+}
+
+.roadmap-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 23%;
+}
+
+.step-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #ffffff;
+    border: 3px solid #cbd5e1;
+}
+
+/* الحالات المختلفة */
+.step.completed .step-icon {
+    background-color: #16a34a;
+    border-color: #16a34a;
+    color: white;
+}
+
+.step.active .step-icon {
+    background-color: #ffffff;
+    border-color: #f3a613;
+    color: #f3a613;
+    box-shadow: 0 0 0 4px rgba(243, 166, 19, 0.15);
+}
+
+.step-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.3;
+}
+
+.step-subtitle {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-align: center;
+    margin-top: 3px;
+    line-height: 1.2;
+}
+
+.step.active .step-title,
+.step.active .step-subtitle {
+    color: #0f172a;
+}
+
+.step.active .step-title::before { content: "▶ "; color: #f3a613; }
+.step.active .step-title::after { content: " ◀"; color: #f3a613; }
+.step.active .step-subtitle::before { content: "▶ "; color: #f3a613; }
+.step.active .step-subtitle::after { content: " ◀"; color: #f3a613; }
+
+.step-indicator-bar {
+    width: 25px;
+    height: 3px;
+    background-color: #cbd5e1;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+.step.completed .step-indicator-bar { background-color: #16a34a; }
+.step.active .step-indicator-bar { background-color: #f3a613; }
+
+/* شاشة انتهاء المشروع (Finished Project Screen) */
+.finished-screen {
+    display: none; /* تظهر فقط عند تفعيل الحالة */
+    text-align: center;
+    padding: 60px 40px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.finished-icon {
+    font-size: 64px;
+    margin-bottom: 25px;
+}
+
+.finished-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 15px;
+}
+
+.finished-desc {
+    font-size: 15px;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.finished-footer {
+    font-size: 12px;
+    color: #94a3b8;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 20px;
+}
+
+/* حالة إخفاء المتعقب عند انتهاء المشروع */
+.project-finished .tracker-body-wrapper {
+    display: none;
+}
+
+.project-finished .finished-screen {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

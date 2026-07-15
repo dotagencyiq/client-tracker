@@ -25,8 +25,8 @@ const CLIENTS_DATABASE = {
     "client004": {
         name: "Khalied Agency",
         service: "Moteeion Graphic Video",
-        activeStep: 4,
-        isFinished: true     // ستظهر له رسالة النهاية تلقائياً
+        activeStep: 3,
+        isFinished: false     // ستظهر له رسالة النهاية تلقائياً
     }
     
 };

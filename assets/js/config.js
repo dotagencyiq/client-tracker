@@ -38,8 +38,8 @@ const CLIENTS_DATABASE = {
     },
 
     "client004": {
-        name: "عباس الفيتر",
-        service: "3 ريلز",
+        name: "Khalid Agency",
+        service: "Motion Graphic Video",
         activeStep: 1,
         isFinished: false
     }

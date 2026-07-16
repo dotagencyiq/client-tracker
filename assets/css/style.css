@@ -111,6 +111,18 @@ body {
 
 .logo-area { margin-bottom: 16px; }
 
+.logo-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 12px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 4px rgba(243, 166, 19, 0.15), 0 4px 14px rgba(0, 0, 0, 0.25);
+    background-color: var(--navy-light); /* خلفية احتياطية أثناء تحميل الصورة أو إن كانت شفافة */
+}
+
 .logo-placeholder {
     font-family: var(--font-display);
     font-size: 30px;

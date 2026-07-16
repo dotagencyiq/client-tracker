@@ -22,15 +22,17 @@
     --success:      #16a34a;
     --success-soft: #dcfce7;
 
-    /* درجات محايدة */
-    --ink-900: #0f172a;
-    --ink-700: #1e293b;
-    --ink-500: #64748b;
-    --ink-400: #94a3b8;
-    --ink-200: #e2e8f0;
-    --ink-100: #f1f5f9;
-    --ink-50:  #f8fafc;
+    /* درجات محايدة — بلمسة بنفسجية خفيفة (بدل الرمادي المحايد) حتى يظهر الأساسي 60% بكل الكارد */
+    --ink-900: #170f2b;
+    --ink-700: #362a52;
+    --ink-500: #6e6389;
+    --ink-400: #9a90b3;
+    --ink-200: #e1d9f3;
+    --ink-100: #f1ecfa;
+    --ink-50:  #f9f7fd;
     --white:   #ffffff;
+
+    color-scheme: light; /* يمنع المتصفح (خصوصاً أندرويد) من عكس الألوان تلقائياً بالوضع الليلي */
 
     /* أبعاد ومقاييس */
     --radius-lg:   20px;
@@ -38,7 +40,7 @@
     --radius-sm:   8px;
     --radius-full: 999px;
 
-    --shadow-card: 0 20px 45px -12px rgba(27, 14, 61, 0.22), 0 4px 12px rgba(27, 14, 61, 0.08);
+    --shadow-card: 0 25px 60px -12px rgba(10, 4, 26, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
     --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
 
     --font-display: 'Sora', 'Segoe UI', Tahoma, sans-serif;
@@ -58,9 +60,9 @@
 
 body {
     background:
-        radial-gradient(circle at 15% 10%, rgba(255, 46, 155, 0.05), transparent 45%),
-        radial-gradient(circle at 85% 90%, rgba(27, 14, 61, 0.06), transparent 45%),
-        var(--ink-50);
+        radial-gradient(circle at 12% 0%, rgba(0, 217, 255, 0.14), transparent 50%),
+        radial-gradient(circle at 92% 100%, rgba(255, 46, 155, 0.16), transparent 50%),
+        linear-gradient(135deg, var(--brand-primary-deep) 0%, var(--brand-primary) 55%, var(--brand-primary-light) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -176,8 +178,8 @@ body {
     flex-shrink: 0;
     width: 38px;
     height: 38px;
-    background-color: var(--ink-50);
-    border: 1px solid var(--ink-100);
+    background-color: var(--brand-secondary-soft);
+    border: 1px solid rgba(255, 46, 155, 0.25);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -189,7 +191,7 @@ body {
 
 .info-row:hover .info-icon {
     transform: translateY(-2px);
-    border-color: var(--brand-secondary-soft);
+    border-color: var(--brand-secondary);
 }
 
 .info-label {
@@ -212,13 +214,13 @@ body {
     white-space: nowrap;
 }
 
-/* شارة الحالة — نيون بينك (عنصر داعم = 30%) */
+/* شارة الحالة — أخضر دلالي ثابت (In Progress = لون عالمي مفهوم، مستقل عن هوية 60-30-10) */
 .status-badge {
     display: inline-flex;
     align-items: center;
-    color: var(--brand-secondary);
+    color: var(--success);
     font-weight: 600;
-    background-color: var(--brand-secondary-soft);
+    background-color: var(--success-soft);
     padding: 4px 12px 4px 10px;
     border-radius: var(--radius-full);
     font-size: 13px;
@@ -227,11 +229,11 @@ body {
 .status-dot {
     width: 8px;
     height: 8px;
-    background-color: var(--brand-secondary);
+    background-color: var(--success);
     border-radius: 50%;
     display: inline-block;
     margin-inline-end: 7px;
-    --pulse-color: rgba(255, 46, 155, 0.5);
+    --pulse-color: rgba(22, 163, 74, 0.5);
     animation: livePulse 2s ease-in-out infinite;
 }
 
@@ -256,7 +258,7 @@ body {
     justify-content: center;
     font-size: 12px;
     font-weight: 700;
-    color: var(--ink-700);
+    color: var(--brand-secondary);
     letter-spacing: 2px;
     margin-bottom: 16px;
 }

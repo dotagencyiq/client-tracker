@@ -1,15 +1,31 @@
 <!DOCTYPE html>
+<!--
+    ============================================================
+    قالب صفحة عميل — DOT Agency Progress Tracker
+    ============================================================
+    ملاحظة للفريق: هذا الملف يُنسخ كما هو لكل عميل جديد
+    (clients/clientXXX/index.html). لا حاجة لتعديل أي شيء هنا —
+    فقط أضف بيانات العميل الجديد بملف assets/js/config.js.
+    المسارات النسبية "../../assets/..." أدناه تفترض أن الملف
+    موجود داخل clients/<client-folder>/index.html بالضبط.
+    ============================================================
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Progress Tracker | DOT Agency</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
 
     <div class="tracker-card">
-        
+
         <header class="tracker-header">
             <div class="logo-area">
                 <div class="logo-placeholder">D<span>O</span>T</div>
@@ -24,14 +40,14 @@
                     <div class="info-icon">👤</div>
                     <div class="info-label">Client</div>
                     <div class="info-separator">:</div>
-                    <!-- سيتم تعبئته تلقائياً -->
+                    <!-- سيتم تعبئته تلقائياً عبر app.js -->
                     <div class="info-value" id="client-name">Loading...</div>
                 </div>
                 <div class="info-row">
                     <div class="info-icon">⚙️</div>
                     <div class="info-label">Service</div>
                     <div class="info-separator">:</div>
-                    <!-- سيتم تعبئته تلقائياً -->
+                    <!-- سيتم تعبئته تلقائياً عبر app.js -->
                     <div class="info-value" id="client-service">Loading...</div>
                 </div>
                 <div class="info-row">
@@ -97,6 +113,7 @@
             </section>
         </div>
 
+        <!-- تظهر تلقائياً فقط إذا isFinished = true بملف config.js -->
         <div class="finished-screen">
             <div class="finished-icon">🎉</div>
             <h2 class="finished-title">انتهى هذا المشروع</h2>
@@ -104,6 +121,13 @@
             <div class="finished-footer">
                 هذا الرابط أصبح غير فعال تتبعياً.
             </div>
+        </div>
+
+        <!-- تظهر تلقائياً فقط إذا تعذّر إيجاد بيانات هذا العميل بـ config.js -->
+        <div class="error-screen">
+            <div class="error-icon">⚠️</div>
+            <h2 class="error-title">تعذّر تحميل بيانات هذا الرابط</h2>
+            <p class="error-desc">يبدو أن هذا الرابط غير صحيح أو أن بيانات المشروع لم تُضف بعد. يرجى التواصل معنا لتأكيد رابط المتابعة الخاص بمشروعك.</p>
         </div>
 
     </div>
